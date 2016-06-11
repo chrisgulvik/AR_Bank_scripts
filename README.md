@@ -35,13 +35,18 @@
     brew install blast bowtie2 kraken mlst prokka quast rnammer spades trimmomatic
     brew tap tseemann/homebrew-bioinformatics-linux && brew update
     brew install bandage
-    pip install -U pip && pip install biopython srst2
+    pip install -U pip && pip install biopython
+    pip install git+https://github.com/katholt/srst2
     #manually install samtools-0.1.18 and bbtools
     cd $HOME
     git clone https://github.com/chrisgulvik/AR_Bank_scripts.git
     echo 'export PATH="$PATH:$HOME/AR_Bank_scripts"' >> $HOME/.bash_profile
+    gunzip ~/AR_Bank_scripts/DBs/*.gz
+    echo 'export AR_BANK_DBs="$HOME/AR_Bank_scripts/DBs"' >> $HOME/.bash_profile
     git clone https://github.com/chrisgulvik/c-SSTAR.git
     echo 'export PATH="$PATH:$HOME/c-SSTAR"' >> $HOME/.bash_profile
     git clone https://github.com/chrisgulvik/genomics_scripts.git
     echo 'export PATH="$PATH:$HOME/genomics_scripts"' >> $HOME/.bash_profile
+    git clone https://github.com/chrisgulvik/summarize_kraken_data.git
+    echo 'export PATH="$PATH:$HOME/summarize_kraken_data"' >> $HOME/.bash_profile
     source ~/.bash_profile
