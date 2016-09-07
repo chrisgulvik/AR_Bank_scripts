@@ -3,8 +3,7 @@
 - Biopython
 - Bandage
 - BBTools
-- BLAST
-- Bowtie 2
+- BLAST+
 - c-SSTAR
 - Kraken
 - mlst
@@ -13,9 +12,8 @@
 - QualAssessCleanSeqs.bash
 - QualAssessRawSeqs.bash
 - RNAmmer
-- SAMtools v0.1.18
 - SPAdes
-- SRST2
+- summarize_kraken-report.sh
 - Trimmomatic
 
 #### Ref sequences and database dependencies:
@@ -27,7 +25,7 @@
 
 #### On SGE cluster:
 
-`module load Bandage/0.7.1 bbmap trimmomatic/0.35 kraken/0.10.5 SPAdes/3.6.2 quast/2.3 ncbi-blast+/2.2.30 prokka/1.8 rnammer/1.2 srst2/0.1.7 samtools/0.1.18 bowtie2/2.2.4 Python/2.7.3`
+`module load Bandage/0.7.1 bbmap trimmomatic/0.35 kraken/0.10.5 SPAdes/3.6.2 quast/2.3 ncbi-blast+/2.2.30 prokka/1.8 rnammer/1.2 Python/2.7.3`
 
 #### Example local installation:
 
@@ -36,9 +34,12 @@
     brew tap tseemann/homebrew-bioinformatics-linux && brew update
     brew install bandage
     pip install -U pip && pip install biopython
-    pip install git+https://github.com/katholt/srst2
-    #manually install samtools-0.1.18 and bbtools
     cd $HOME
+    wget https://downloads.sourceforge.net/project/bbmap/BBMap_36.11.tar.gz
+    gunzip BBMap_36.11.tar.gz
+    cd bbmap
+    make -f makefile.linux
+    echo 'export PATH="$HOME/bbmap:$PATH"' >> $HOME/.bash_profile
     git clone https://github.com/chrisgulvik/AR_Bank_scripts.git
     echo 'export PATH="$PATH:$HOME/AR_Bank_scripts"' >> $HOME/.bash_profile
     gunzip ~/AR_Bank_scripts/DBs/*.gz
