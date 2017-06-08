@@ -30,16 +30,11 @@
 #### Example local installation:
 
     brew tap homebrew/science && brew update
-    brew install blast bowtie2 kraken mlst prokka quast rnammer spades trimmomatic
+    brew install bbmap blast bowtie2 kraken mlst prokka quast rnammer spades trimmomatic
     brew tap tseemann/homebrew-bioinformatics-linux && brew update
     brew install bandage
     pip install -U pip && pip install biopython
     cd $HOME
-    wget https://downloads.sourceforge.net/project/bbmap/BBMap_36.11.tar.gz
-    gunzip BBMap_36.11.tar.gz
-    cd bbmap
-    make -f makefile.linux
-    echo 'export PATH="$HOME/bbmap:$PATH"' >> $HOME/.bash_profile
     git clone https://github.com/chrisgulvik/AR_Bank_scripts.git
     echo 'export PATH="$PATH:$HOME/AR_Bank_scripts"' >> $HOME/.bash_profile
     gunzip ~/AR_Bank_scripts/DBs/*.gz
